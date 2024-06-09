@@ -216,6 +216,9 @@ dependencies {
     onlyMainRuntimeOnly fg.deobf("curse.maven:jade-324717:5072729")
     onlyMainImplementation fg.deobf("curse.maven:jei-238222:5101366")
 
+    onlyMainRuntimeOnly fg.deobf("maven.modrinth:ore-excavation:1.13.170")
+
+
     onlyMainRuntimeOnly fg.deobf("curse.maven:connector-extras-913445:5287497")
     runtimeOnly fg.deobf("curse.maven:forgified-fabric-api-889079:5387432")
 //

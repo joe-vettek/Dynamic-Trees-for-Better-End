@@ -3,6 +3,6 @@
     "textures":{
         "particle":"betterend:block/lucernia_leaves_1",
         "log":"betterend:block/lucernia_log_side_2",
-        "leaves":"betterend:block/lucernia_leaves"
+        "leaves":"betterend:block/lucernia_leaves_1"
     }
 }
