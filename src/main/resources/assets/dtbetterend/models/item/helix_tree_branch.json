@@ -1,0 +1,7 @@
+{
+    "parent":"dynamictrees:item/branch",
+    "textures":{
+        "bark":"betterend:block/helix_tree_log_side_2",
+        "rings":"betterend:block/helix_tree_log_top"
+    }
+}

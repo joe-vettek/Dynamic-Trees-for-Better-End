@@ -1,0 +1,7 @@
+{
+    "common_leaves":"dtbetterend:dragon_tree",
+    "common_species":"dtbetterend:dragon_tree",
+    "primitive_log":"betterend:dragon_tree_log",
+    "primitive_stripped_log":"betterend:dragon_tree_stripped_log",
+    "max_branch_radius":8
+}

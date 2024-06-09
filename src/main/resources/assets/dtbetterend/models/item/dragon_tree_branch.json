@@ -1,0 +1,7 @@
+{
+    "parent":"dynamictrees:item/branch",
+    "textures":{
+        "bark":"betterend:block/dragon_tree_log_side_2",
+        "rings":"betterend:block/dragon_tree_log_top"
+    }
+}

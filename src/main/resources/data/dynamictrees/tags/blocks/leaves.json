@@ -1,0 +1,13 @@
+{
+    "replace":false,
+    "values":[
+        "dtbetterend:dragon_tree_leaves",
+        "dtbetterend:helix_tree_leaves",
+        "dtbetterend:lacugrove_leaves",
+        "dtbetterend:lucernia_leaves",
+        "dtbetterend:mossy_glowshroom_leaves",
+        "dtbetterend:pythadendron_leaves",
+        "dtbetterend:tenanea_leaves",
+        "dtbetterend:umbrella_tree_leaves"
+    ]
+}

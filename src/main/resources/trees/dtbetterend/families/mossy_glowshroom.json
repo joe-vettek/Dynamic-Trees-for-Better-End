@@ -1,0 +1,7 @@
+{
+    "common_leaves":"dtbetterend:mossy_glowshroom",
+    "common_species":"dtbetterend:mossy_glowshroom",
+    "primitive_log":"betterend:mossy_glowshroom_log",
+    "primitive_stripped_log":"betterend:mossy_glowshroom_stripped_log",
+    "max_branch_radius":8
+}

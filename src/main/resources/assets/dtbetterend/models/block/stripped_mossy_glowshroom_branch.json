@@ -1,0 +1,7 @@
+{
+    "loader":"dynamictrees:branch",
+    "textures":{
+        "bark":"betterend:block/mossy_glowshroom_stripped_log_side",
+        "rings":"betterend:block/mossy_glowshroom_stripped_log_top"
+    }
+}
