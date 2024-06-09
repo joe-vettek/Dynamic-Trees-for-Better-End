@@ -2,18 +2,18 @@ package xueluoanping.dtbetterend.data.lang;
 
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import xueluoanping.dtbetterend.DTFruitfulFun;
+import xueluoanping.dtbetterend.DTBetterEnd;
 import xueluoanping.dtbetterend.ModConstants;
 
 public class Lang_EN extends LangHelper {
     public Lang_EN(PackOutput gen, ExistingFileHelper helper) {
-        super(gen, helper, DTFruitfulFun.MOD_ID, "en_us");
+        super(gen, helper, DTBetterEnd.MOD_ID, "en_us");
     }
 
 
     @Override
     protected void addTranslations() {
-        add(DTFruitfulFun.MOD_ID, "Dynamic Trees for Fruitful Fun");
+        add(DTBetterEnd.MOD_ID, "Dynamic Trees for Fruitful Fun");
 
         add(ModConstants.POMEGRANATE_SAPLING.get(), "Pomegranate Sapling");
         // add(ModConstants.POMEGRANATE_BRANCH.get(), "Pomegranate Tree");

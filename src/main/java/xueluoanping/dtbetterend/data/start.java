@@ -7,14 +7,14 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
-import xueluoanping.dtbetterend.DTFruitfulFun;
+import xueluoanping.dtbetterend.DTBetterEnd;
 import xueluoanping.dtbetterend.data.loot.DTFTLootTableProvider;
 
 import java.util.concurrent.CompletableFuture;
 
 
 public class start {
-    public final static String MODID = DTFruitfulFun.MOD_ID;
+    public final static String MODID = DTBetterEnd.MOD_ID;
 
     public static void dataGen(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
@@ -22,7 +22,7 @@ public class start {
         PackOutput packOutput = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         if (event.includeServer()) {
-            DTFruitfulFun.logger("Generate recipe");
+            DTBetterEnd.logger("Generate recipe");
 
             // work it until 1.21
             // generator.addProvider(event.includeServer(),new RecipeDataProvider(packOutput));

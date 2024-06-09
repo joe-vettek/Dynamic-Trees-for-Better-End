@@ -5,7 +5,7 @@ import com.ferreusveritas.dynamictrees.api.worldgen.FeatureCanceller;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraftforge.registries.ForgeRegistries;
-import xueluoanping.dtbetterend.DTFruitfulFun;
+import xueluoanping.dtbetterend.DTBetterEnd;
 
 public class FruitTreesFeatureCanceller extends FeatureCanceller {
     public FruitTreesFeatureCanceller(ResourceLocation registryName) {
@@ -19,7 +19,7 @@ public class FruitTreesFeatureCanceller extends FeatureCanceller {
         if (featureName == null) {
             return false;
         }
-        DTFruitfulFun.logger(22,featureName);
+        DTBetterEnd.logger(22,featureName);
         return   false;
         // && (WorldGenRegistries.CONFIGURED_FEATURE.getKey(configuredFeature) + "").startsWith("fruittrees");
     }

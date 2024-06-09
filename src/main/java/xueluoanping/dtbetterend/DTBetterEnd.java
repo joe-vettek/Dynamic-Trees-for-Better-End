@@ -15,15 +15,15 @@ import xueluoanping.dtbetterend.data.start;
 import java.util.Objects;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(DTFruitfulFun.MOD_ID)
-public class DTFruitfulFun {
+@Mod(DTBetterEnd.MOD_ID)
+public class DTBetterEnd {
     public static final String MOD_ID = "dtbetterend";
     // Directly reference a log4j logger.
     public static final Logger LOGGER = LogManager.getLogger();
 
     public static final boolean useLogger=Objects.equals(System.getProperty("forgegradle.runs.dev"), "true");
 
-    public DTFruitfulFun() {
+    public DTBetterEnd() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -110,6 +110,6 @@ public class DTFruitfulFun {
     }
 
     public static ResourceLocation rl(String name) {
-        return new ResourceLocation(DTFruitfulFun.MOD_ID, name);
+        return new ResourceLocation(DTBetterEnd.MOD_ID, name);
     }
 }

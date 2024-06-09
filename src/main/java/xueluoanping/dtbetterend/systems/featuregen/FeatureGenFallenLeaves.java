@@ -11,6 +11,7 @@ import com.ferreusveritas.dynamictrees.systems.genfeature.context.PostGrowContex
 import com.ferreusveritas.dynamictrees.systems.nodemapper.FindEndsNode;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -53,6 +54,7 @@ public class FeatureGenFallenLeaves extends GenFeature {
         final FindEndsNode endFinder = new FindEndsNode();
         TreeHelper.startAnalysisFromRoot(world, context.pos(), new MapSignal(endFinder));
         final List<BlockPos> endPoints = endFinder.getEnds();
+
 
         if (endPoints.isEmpty()) {
             return false;

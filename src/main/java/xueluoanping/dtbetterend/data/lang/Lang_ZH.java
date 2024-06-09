@@ -3,19 +3,19 @@ package xueluoanping.dtbetterend.data.lang;
 
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import xueluoanping.dtbetterend.DTFruitfulFun;
+import xueluoanping.dtbetterend.DTBetterEnd;
 import xueluoanping.dtbetterend.ModConstants;
 
 
 public class Lang_ZH extends LangHelper {
 	public Lang_ZH(PackOutput gen, ExistingFileHelper helper) {
-		super(gen, helper, DTFruitfulFun.MOD_ID, "zh_cn");
+		super(gen, helper, DTBetterEnd.MOD_ID, "zh_cn");
 	}
 
 
 	@Override
 	protected void addTranslations() {
-		add(DTFruitfulFun.MOD_ID, "动态的树：妙趣果园附属");
+		add(DTBetterEnd.MOD_ID, "动态的树：妙趣果园附属");
 		add(ModConstants.POMEGRANATE_SAPLING.get(), "石榴树苗");
 		// add(ModConstants.POMEGRANATE_BRANCH.get(), "石榴树");
 		add(ModConstants.POMEGRANATE_SEED.get(), "石榴籽");
