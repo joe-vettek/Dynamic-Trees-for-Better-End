@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import xueluoanping.dtbetterend.systems.ModFeatures;
+import xueluoanping.dtbetterend.systems.ModGrowthLogicKits;
 import xueluoanping.dtbetterend.systems.leaves.FurOuterLeaveProperties;
 import xueluoanping.dtbetterend.systems.worldgen.FruitTreesFeatureCanceller;
 
@@ -54,7 +55,7 @@ public class DTBetterEndRegistries {
 
     @SubscribeEvent
     public static void onGrowthLogicKitsRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<GrowthLogicKit> event) {
-        // ModGrowthLogicKits.register(event.getRegistry());
+        ModGrowthLogicKits.register(event.getRegistry());
     }
 
     @SubscribeEvent

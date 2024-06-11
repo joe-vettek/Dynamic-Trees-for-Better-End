@@ -1,0 +1,6 @@
+{
+    "type": "bare",
+    "primitive_leaves":"betterend:tenanea_outer_leaves",
+    "outer_block":"betterend:tenanea_outer_leaves",
+    "cell_kit": 1
+}
