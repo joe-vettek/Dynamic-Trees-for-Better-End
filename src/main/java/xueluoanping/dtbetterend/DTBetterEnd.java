@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import xueluoanping.dtbetterend.data.start;
 
+import java.util.List;
 import java.util.Objects;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -101,8 +102,23 @@ public class DTBetterEnd {
         // if (General.bool.get())
         if (useLogger) {
             StringBuilder output = new StringBuilder();
+
             for (Object i : x) {
-                output.append("，【").append(i).append("】");
+                if (i == null) output.append(", ").append("null");
+                else if (i.getClass().isArray()) {
+                    output.append(", [");
+                    for (Object c : (int[]) i) {
+                        output.append(c).append(",");
+                    }
+                    output.append("]");
+                } else if (i instanceof List) {
+                    output.append(", [");
+                    for (Object c : (List) i) {
+                        output.append(c);
+                    }
+                    output.append("]");
+                } else
+                    output.append(", ").append(i);
             }
             LOGGER.info(output.substring(1));
         }

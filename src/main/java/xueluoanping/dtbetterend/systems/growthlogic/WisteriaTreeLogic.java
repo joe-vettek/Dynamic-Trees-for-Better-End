@@ -53,82 +53,48 @@ public class WisteriaTreeLogic extends PalmGrowthLogic {
         final BlockPos pos = context.pos();
         var rootPos = signal.rootPos;
         Direction originDir = signal.dir.getOpposite();
-
         int currentHeight = signal.numSteps + 1;
         long seed = CoordUtils.coordHashCode(signal.rootPos, 3) + ((ServerLevel) world).getSeed();
         Random random = new Random(seed);
-
-        int forkLength = Math.abs(random.nextInt(4)) + 1;
-        int forkHeight = Math.abs(random.nextInt(4)) + 1 + species.getLowestBranchHeight();
-        int tl = configuration.get(TURNING_LENGTH);
-        int bendingNode = (tl > 0 ? Math.abs(random.nextInt(tl)) : 0) + species.getLowestBranchHeight();
-        int directionOrin = random.nextInt(4) + 2;
-
         var delta = signal.delta;
 
-        // DTNaturesSpirit.logger(species.getLowestBranchHeight(),currentHeight, pos, originDir.ordinal());
-
-        // List<Integer> casesList = new ArrayList<>();
-        // for (int i = forkHeight; i < forkHeight + forkLength; i++) {
-        //     casesList.add(i);
-        // }
-        // if (casesList.contains(currentHeight)) {
-        //     probMap[directionOrin] = 1;
-        // }
-        // if (currentHeight <= bendingNode) {
-        //     probMap[1] = 0;
-        //     probMap[directionOrin] = 1;
-        // }
-        // if (pos.getX() == rootPos.getX() && pos.getZ() == rootPos.getZ() && pos.getY() > rootPos.getY() + 6)
-        // // if (random.nextBoolean())
-        // {
-        //     probMap = new int[]{0, 0, 0, 0, 0, 0};
-        // }
-        // if (delta.getY() == 5) {
-        //     probMap = new int[]{0, 2, 1, 2, 3, 4};
-        // }
-        // if (delta.getY() % 2 == 0) {
-        //     if (delta.getX() >= 0 && delta.getZ() >= 0) {
-        //         probMap = new int[]{0, 0, 5, 0, 0, 0};
-        //     }
-        //     if (delta.getX() >= 0 && delta.getZ() <= 0) {
-        //         probMap = new int[]{0, 0, 0, 0, 3, 0};
-        //
-        //     }
-        //     if (delta.getX() <=0 && delta.getZ() >= 0) {
-        //         probMap = new int[]{0, 0, 0, 2, 0, 0};
-        //     }
-        //     if (delta.getX() <= 0 && delta.getZ() <= 0) {
-        //         probMap = new int[]{0, 0, 0, 0, 0, 4};
-        //     }
-        // }
-
-        if (delta.getX()==0&&delta.getY()==5&&delta.getZ()==0){
-            probMap = new int[]{0, 2, 1, 2, 3, 4};
-        }
-        if (delta.getX()==0&&delta.getZ()==1){
-            probMap = new int[]{0, 0, 1, 0, 0, 0};
-        }
-        if (delta.getX()==0&&delta.getZ()==-1){
-            probMap = new int[]{0, 0, 0, 1, 0, 0};
-        }
-        if (delta.getX()==-1&&delta.getZ()==1){
-            probMap = new int[]{0, 0, 0, 0, 1, 0};
-        }
-        if (delta.getX()==1&&delta.getZ()==0){
+        if (delta.getX() == 0 && delta.getY() == 5 && delta.getZ() == 0) {
+            probMap = new int[]{0, 0, 1, 1, 1, 1};
             probMap = new int[]{0, 0, 0, 0, 0, 1};
+        } else {
+            if (delta.getX() == 0 && delta.getZ() > 0) {
+                probMap = new int[]{0, 0, 0, 1, 0, 0};
+            }
+            if (delta.getX() == 0 && delta.getZ() < 0) {
+                probMap = new int[]{0, 0, 1, 0, 0, 0};
+            }
+            if (delta.getX() < 0 && delta.getZ() == 0) {
+                probMap = new int[]{0, 0, 0, 0, 1, 0};
+            }
+            if (delta.getX() > 0 && delta.getZ() == 0) {
+                probMap = new int[]{0, 0, 0, 0, 0, 1};
+            }
+            // if (delta.getX()!=0&&delta.getZ()!=0){
+            //     if (delta.getX() % 2 == 0||delta.getZ() % 2 == 0) {
+            //         probMap = new int[]{0, 1, 0, 0, 0, 0};
+            //     }
+            // }
+            if ((delta.getX() > 2 && delta.getX() % 2 == 0&&delta.getY() % 2 == 1 )||
+                    (delta.getY() % 2 == 0&&delta.getX() % 2 == 1)) {
+                probMap = new int[]{0, 1, 0, 0, 0, 0};
+            }
         }
 
-        DTBetterEnd.logger(signal.delta, signal.rootPos);
-        if (delta.getY()>6){
-            probMap = new int[]{100, 0, 0, 0, 0, 0};
-        }
+        DTBetterEnd.logger(signal.delta, probMap);
+        // if (delta.getY()>6){
+        //     probMap = new int[]{100, 0, 0, 0, 0, 0};
+        // }
         return probMap;
     }
 
     @Override
     public Direction selectNewDirection(GrowthLogicKitConfiguration configuration, DirectionSelectionContext context) {
-        var d=super.selectNewDirection(configuration, context);
+        var d = super.selectNewDirection(configuration, context);
         // DTBetterEnd.logger(d,context.signal().delta);
         return d;
     }
