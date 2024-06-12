@@ -66,7 +66,7 @@ public class LacugroveTreeLogic extends GrowthLogicKit {
             if (delta.getX() <= 1 && delta.getZ() <= 1)
                 if (delta.getY() > 5 + random.nextInt(4) && delta.getY() % Mth.clamp(random.nextInt(3), 1, 3) == 0) {
                     probMap = new int[]{0, 10, random.nextInt(7) + 3, random.nextInt(7) + 3, random.nextInt(7) + 3, random.nextInt(7) + 3};
-                    DTBetterEnd.logger(delta);
+                    // DTBetterEnd.logger(delta);
                 }
 
             if (delta.getX() >= 0 && delta.getZ() > 0) {

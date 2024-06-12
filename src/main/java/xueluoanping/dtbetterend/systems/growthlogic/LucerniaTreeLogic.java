@@ -130,7 +130,7 @@ public class LucerniaTreeLogic extends GrowthLogicKit {
             //     probMap = new int[]{0, 1, 0, 0, 0, 0};
             // }
 
-            DTBetterEnd.logger(signal.energy,signal.numSteps,ran, seed, delta);
+            // DTBetterEnd.logger(signal.energy,signal.numSteps,ran, seed, delta);
         }
         probMap[originDir.ordinal()] = 0;
         // DTBetterEnd.logger(signal.delta, probMap);
