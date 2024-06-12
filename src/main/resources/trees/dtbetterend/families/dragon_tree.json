@@ -5,5 +5,5 @@
     "primitive_stripped_log":"betterend:dragon_tree_stripped_log",
     "max_branch_radius": 24,
     "generate_surface_root": true,
-    "max_signal_depth": 96
+    "max_signal_depth": 80
 }

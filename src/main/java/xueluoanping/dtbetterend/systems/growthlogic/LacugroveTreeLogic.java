@@ -63,45 +63,33 @@ public class LacugroveTreeLogic extends GrowthLogicKit {
             if (Mth.abs(delta.getX()) > 5 || Mth.abs(delta.getZ()) > 5)
                 probMap[Direction.UP.ordinal()] = 50;
 
-            seed = CoordUtils.coordHashCode(rootPos, 3) + ((ServerLevel) world).getSeed();
-            random = new Random(seed);
-            if (delta.getY() > 16 + random.nextInt(4)) {
-                probMap = new int[]{0, 3, random.nextInt(10), random.nextInt(10), random.nextInt(10), random.nextInt(10)};
-            }
-            seed = CoordUtils.coordHashCode(pos, 3) + ((ServerLevel) world).getSeed();
-            random = new Random(seed);
-            float ran = random.nextFloat();
-            if (Mth.abs(delta.getX()) < 5 && Mth.abs(delta.getZ()) < 5) {
-                if (delta.getX() >= 0 && delta.getZ() > 0) {
-                    probMap = new int[]{0, 0, 0, 1, 0, 0};
-                    if (ran < 0.332) {
-                        probMap = new int[]{0, 10, 0, 1, 0, 0};
-                    }
-                }
-                // north
-                else if (delta.getX() <= 0 && delta.getZ() < 0) {
-                    probMap = new int[]{0, 0, 1, 0, 0, 0};
-                    if (ran < 0.332) {
-                        probMap = new int[]{0, 10, 0, 0, 0, 0};
-                    }
-                }
-                // west
-                else if (delta.getX() < 0 && delta.getZ() >= 0) {
-                    probMap = new int[]{0, 0, 0, 0, 1, 0};
-                    if (ran < 0.332) {
-                        probMap = new int[]{0, 10, 0, 0, 0, 0};
-                    }
-                }
-                // test east
-                else if (delta.getX() > 0 && delta.getZ() <= 0) {
-                    probMap = new int[]{0, 0, 0, 0, 0, 1};
-                    if (ran < 0.332) {
-                        probMap = new int[]{0, 10, 0, 0, 0, 0};
-                    }
+            if (delta.getX() <= 1 && delta.getZ() <= 1)
+                if (delta.getY() > 5 + random.nextInt(4) && delta.getY() % Mth.clamp(random.nextInt(3), 1, 3) == 0) {
+                    probMap = new int[]{0, 10, random.nextInt(7) + 3, random.nextInt(7) + 3, random.nextInt(7) + 3, random.nextInt(7) + 3};
+                    DTBetterEnd.logger(delta);
                 }
 
-                if (Mth.abs(delta.getX()) < 3 && Mth.abs(delta.getZ()) < 3 && ran > 0.85) {
-                    probMap[1] += 1;
+            if (delta.getX() >= 0 && delta.getZ() > 0) {
+                probMap = new int[]{1, 0, 0, 10, 0, 0};
+            }
+            // north
+            else if (delta.getX() <= 0 && delta.getZ() < 0) {
+                probMap = new int[]{1, 0, 10, 0, 0, 0};
+            }
+            // west
+            else if (delta.getX() < 0 && delta.getZ() >= 0) {
+                probMap = new int[]{1, 0, 0, 0, 10, 0};
+            }
+            // test east
+            else if (delta.getX() > 0 && delta.getZ() <= 0) {
+                probMap = new int[]{1, 0, 0, 0, 0, 10};
+            }
+
+            if (Mth.abs(delta.getX()) > 2 + random.nextInt(2) || Mth.abs(delta.getZ()) > 2 + random.nextInt(2)) {
+                for (Direction direction : List.of(Direction.DOWN, Direction.EAST, Direction.WEST, Direction.SOUTH, Direction.NORTH)) {
+                    if (probMap[direction.ordinal()] == 0)
+                        probMap[direction.ordinal()] = random.nextInt(5);
+                    else probMap[direction.ordinal()] = random.nextInt(2);
                 }
             }
 
@@ -114,9 +102,19 @@ public class LacugroveTreeLogic extends GrowthLogicKit {
 
     @Override
     public Direction selectNewDirection(GrowthLogicKitConfiguration configuration, DirectionSelectionContext context) {
-        var d = super.selectNewDirection(configuration, context);
-        // DTBetterEnd.logger(d,context.signal().delta);
-        return d;
+        final Direction newDir = super.selectNewDirection(configuration, context);
+        if (context.signal().isInTrunk() && newDir != Direction.UP) { // Turned out of trunk.
+            final BlockPos pos = context.pos();
+            long seed = CoordUtils.coordHashCode(pos, 3) + ((ServerLevel) context.level()).getSeed();
+            Random random = new Random(seed);
+            var delta = context.signal().delta;
+            context.signal().energy /= delta.getY() > 8 + random.nextInt(4) ? 2 : 4;
+            final Float horizontalLimiter = 4f+random.nextInt(3);
+            if (context.signal().energy > horizontalLimiter) {
+                context.signal().energy = horizontalLimiter;
+            }
+        }
+        return newDir;
     }
 
     @Override
@@ -128,7 +126,7 @@ public class LacugroveTreeLogic extends GrowthLogicKit {
     public float getEnergy(GrowthLogicKitConfiguration configuration, PositionalSpeciesContext context) {
         long day = context.level().getGameTime() / 24000L;
         int month = (int) day / 30; // Change the hashs every in-game month
-        var en= super.getEnergy(configuration, context) *
+        var en = super.getEnergy(configuration, context) *
                 context.species().biomeSuitability(context.level(), context.pos()) +
                 (CoordUtils.coordHashCode(context.pos().above(month), 3) %
                         3); // Vary the height energy by a psuedorandom hash function

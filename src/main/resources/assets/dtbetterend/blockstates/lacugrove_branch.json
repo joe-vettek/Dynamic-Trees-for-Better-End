@@ -1,15 +1,7 @@
 {
   "variants": {
-    "": [
-      {
-        "model": "dtbetterend:block/lacugrove_branch"
-      },
-      {
-        "model": "dtbetterend:block/lacugrove_branch_3"
-      },
-      {
-        "model": "dtbetterend:block/lacugrove_branch_4"
-      }
-    ]
+    "": {
+      "model": "dtbetterend:block/lacugrove_branch"
+    }
   }
 }
