@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "dtbetterend.refmap.json",
   "mixins": [
+    "MixinFurBlock"
   ],
   "client": [
   ],

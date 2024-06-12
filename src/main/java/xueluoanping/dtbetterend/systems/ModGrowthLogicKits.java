@@ -9,10 +9,12 @@ import xueluoanping.dtbetterend.systems.growthlogic.*;
 
 public class ModGrowthLogicKits {
     public static final GrowthLogicKit HEMLOCK = new RedwoodLogic(new ResourceLocation(DTBetterEnd.MOD_ID, "hemlock"));
-    public static final GrowthLogicKit WISTERIA = new WisteriaTreeLogic(new ResourceLocation(DTBetterEnd.MOD_ID, "wisteria"));
+    public static final GrowthLogicKit WISTERIA = new TenaneaTreeLogic(new ResourceLocation(DTBetterEnd.MOD_ID, "tenanea"));
+    public static final GrowthLogicKit LUCERNIA_TREE_LOGIC = new LucerniaTreeLogic(DTBetterEnd.rl("lucernia"));
 
     public static void register(final Registry<GrowthLogicKit> registry) {
         registry.registerAll(HEMLOCK);
         registry.register(WISTERIA);
+        registry.register(LUCERNIA_TREE_LOGIC);
     }
 }
