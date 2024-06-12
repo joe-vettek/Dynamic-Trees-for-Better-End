@@ -3,5 +3,6 @@
     "textures":{
         "bark":"betterend:block/lacugrove_log_side_2",
         "rings":"betterend:block/lacugrove_log_top"
-    }
+    },
+    "family": "dtbetterend:lacugrove"
 }
