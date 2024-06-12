@@ -1,0 +1,6 @@
+{
+    "loader":"dynamictrees:surface_root",
+    "textures":{
+        "bark":"betterend:block/dragon_tree_log_side"
+    }
+}
