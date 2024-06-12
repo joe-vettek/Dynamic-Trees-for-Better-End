@@ -1,10 +1,17 @@
 {
     "family":"dtbetterend:pythadendron",
-    "tapering":0.3,
-    "signal_energy":12.0,
-    "up_probability":1,
-    "lowest_branch_height":4,
-    "growth_rate":0.8,
+    "tapering":0.8,
+    "signal_energy":64.0,
+    "up_probability":0.6,
+    "lowest_branch_height":5,
+    "growth_rate":1.5,
+    "soil_longevity": 20,
+    "max_branch_radius": 24,
+    "growth_logic_kit": {
+        "name": "dtbetterend:pythadendron",
+        "properties": {
+        }
+    },
     "leaves_properties":"dtbetterend:pythadendron",
     "environment_factors":{
         "cold":0.75,

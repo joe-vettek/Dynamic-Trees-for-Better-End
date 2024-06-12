@@ -1,3 +1,4 @@
 {
-    "primitive_leaves":"betterend:lacugrove_leaves"
+    "primitive_leaves":"betterend:lacugrove_leaves",
+    "cell_kit": "dynamictrees:dark_oak"
 }
