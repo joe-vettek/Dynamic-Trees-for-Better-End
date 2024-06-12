@@ -37,14 +37,15 @@ public class FurOuterLeaveProperties extends LeavesProperties {
             public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
                 super.randomTick(state, level, pos, rand);
                 for (Direction direction : ALL) {
-                    if (level.isEmptyBlock(pos.relative(direction)) &&direction!=Direction.DOWN) {
-                        // level.setBlock(pos.relative(direction),
-                        //         getOuter().defaultBlockState().hasProperty(BlockStateProperties.FACING)?
-                        //         getOuter().defaultBlockState().setValue(BlockStateProperties.FACING,
-                        //                 direction):
-                        //         getOuter().defaultBlockState(),
-                        //         Block.UPDATE_ALL);
-                    }
+                    // if(level.getRandom().nextBoolean())
+                    // if (level.isEmptyBlock(pos.relative(direction)) &&direction!=Direction.DOWN) {
+                    //     level.setBlock(pos.relative(direction),
+                    //             getOuter().defaultBlockState().hasProperty(BlockStateProperties.FACING)?
+                    //             getOuter().defaultBlockState().setValue(BlockStateProperties.FACING,
+                    //                     direction):
+                    //             getOuter().defaultBlockState(),
+                    //             Block.UPDATE_ALL);
+                    // }
                 }
             }
         };

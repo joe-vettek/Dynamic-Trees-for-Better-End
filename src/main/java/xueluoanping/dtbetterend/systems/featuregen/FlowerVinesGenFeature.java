@@ -116,7 +116,7 @@ public class FlowerVinesGenFeature extends com.ferreusveritas.dynamictrees.syste
     @Override
     protected void placeVines(LevelAccessor level, BlockPos vinePos, BlockState vinesState, int maxLength, @Nullable BlockState tipState, VineType vineType, boolean worldGen) {
         // Generate a random length for the vine.
-        final int len = Mth.clamp(level.getRandom().nextInt(maxLength) + 3, 3, maxLength);
+        final int len = Mth.clamp(level.getRandom().nextInt(maxLength) + 1, 1, maxLength);
         final BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos(vinePos.getX(), vinePos.getY(), vinePos.getZ());
 
         tipState = tipState == null ? vinesState : tipState;

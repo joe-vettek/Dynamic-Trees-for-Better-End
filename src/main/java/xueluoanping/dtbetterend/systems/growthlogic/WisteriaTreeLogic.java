@@ -9,10 +9,12 @@ import com.ferreusveritas.dynamictrees.growthlogic.context.PositionalSpeciesCont
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
+import com.ferreusveritas.dynamictrees.util.RandomXOR;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
 import xueluoanping.dtbetterend.DTBetterEnd;
 
@@ -54,37 +56,78 @@ public class WisteriaTreeLogic extends PalmGrowthLogic {
         var rootPos = signal.rootPos;
         Direction originDir = signal.dir.getOpposite();
         int currentHeight = signal.numSteps + 1;
-        long seed = CoordUtils.coordHashCode(signal.rootPos, 3) + ((ServerLevel) world).getSeed();
+        long seed = CoordUtils.coordHashCode(pos, 3) + ((ServerLevel) world).getSeed();
         Random random = new Random(seed);
         var delta = signal.delta;
 
-        if (delta.getX() == 0 && delta.getY() == 5 && delta.getZ() == 0) {
-            probMap = new int[]{0, 0, 1, 1, 1, 1};
-            probMap = new int[]{0, 0, 0, 0, 0, 1};
+        if (signal.numSteps == 3) {
+            probMap = new int[]{0, 3, 1 + random.nextInt(2), 1 + random.nextInt(2), 1 + random.nextInt(2), 1 + random.nextInt(2)};
+            // probMap = new int[]{0, 0, 0, 0, 0, 1};
         } else {
-            if (delta.getX() == 0 && delta.getZ() > 0) {
+            // south
+            float ran = random.nextFloat();
+            if (delta.getX() >= 0 && delta.getZ() > 0) {
                 probMap = new int[]{0, 0, 0, 1, 0, 0};
+                if (ran < 0.32) {
+                    probMap = new int[]{0, 10, 0, 1, 0, 0};
+                } else if (ran < 0.56) {
+                    probMap = new int[]{0, 0, 0, 1, 0, 10};
+                }
             }
-            if (delta.getX() == 0 && delta.getZ() < 0) {
+            // north
+            else if (delta.getX() <= 0 && delta.getZ() < 0) {
                 probMap = new int[]{0, 0, 1, 0, 0, 0};
+                if (ran < 0.32) {
+                    probMap = new int[]{0, 10, 1, 0, 0, 0};
+                } else if (ran < 0.56) {
+                    probMap = new int[]{0, 0, 0, 1, 10, 0};
+                }
             }
-            if (delta.getX() < 0 && delta.getZ() == 0) {
+            // west
+            else if (delta.getX() < 0 && delta.getZ() >= 0) {
                 probMap = new int[]{0, 0, 0, 0, 1, 0};
+                if (ran < 0.32) {
+                    probMap = new int[]{0, 10, 0, 0, 1, 0};
+                } else if (ran < 0.56) {
+                    probMap = new int[]{0, 0, 0, 10, 1, 0};
+                }
             }
-            if (delta.getX() > 0 && delta.getZ() == 0) {
+            // test east
+            else if (delta.getX() > 0 && delta.getZ() <= 0) {
                 probMap = new int[]{0, 0, 0, 0, 0, 1};
+                if (ran < 0.32) {
+                    probMap = new int[]{0, 10, 0, 0, 0, 1};
+                } else if (ran < 0.56) {
+                    probMap = new int[]{0, 0, 10, 0, 0, 1};
+                }
+            } else {
+                probMap[Direction.UP.ordinal()] = 1;
+                probMap[2 + random.nextInt(4)] = 4;
+                probMap = new int[]{0, 3, 1 + random.nextInt(2), 1 + random.nextInt(2), 1 + random.nextInt(2), 1 + random.nextInt(2)};
             }
+
+            if (Mth.abs(delta.getX()) > 10 || Mth.abs(delta.getZ()) > 10)
+                probMap[Direction.UP.ordinal()] = 10;
+
+            if (delta.getY() > 5 + random.nextInt(7)) {
+                probMap = new int[]{0, 0, random.nextInt(4), random.nextInt(4), random.nextInt(4), random.nextInt(4)};
+            }
+
+            // disable origin
+
             // if (delta.getX()!=0&&delta.getZ()!=0){
             //     if (delta.getX() % 2 == 0||delta.getZ() % 2 == 0) {
             //         probMap = new int[]{0, 1, 0, 0, 0, 0};
             //     }
             // }
-            if ((delta.getX() > 2 && delta.getX() % 2 == 0&&delta.getY() % 2 == 1 )||
-                    (delta.getY() % 2 == 0&&delta.getX() % 2 == 1)) {
-                probMap = new int[]{0, 1, 0, 0, 0, 0};
-            }
-        }
+            // if ((delta.getX() > 2 && delta.getX() % 2 == 0&&delta.getY() % 2 == 1 )||
+            //         (delta.getY() % 2 == 0&&delta.getX() % 2 == 1)) {
+            //     probMap = new int[]{0, 1, 0, 0, 0, 0};
+            // }
 
+            DTBetterEnd.logger(ran, seed, delta);
+        }
+        probMap[originDir.ordinal()] = 0;
         DTBetterEnd.logger(signal.delta, probMap);
         // if (delta.getY()>6){
         //     probMap = new int[]{100, 0, 0, 0, 0, 0};
