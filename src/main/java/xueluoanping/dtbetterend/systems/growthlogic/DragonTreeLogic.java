@@ -58,84 +58,57 @@ public class DragonTreeLogic extends GrowthLogicKit {
         Random random = new Random(seed);
         var delta = signal.delta;
 
-        if (signal.numSteps == 5) {
-            probMap = new int[]{0, 3, 1 + random.nextInt(2), 1 + random.nextInt(2), 1 + random.nextInt(2), 1 + random.nextInt(2)};
-            // probMap = new int[]{0, 0, 0, 0, 0, 1};
-        } else {
-            // south
+        {
+
+            if (Mth.abs(delta.getX()) > 5 || Mth.abs(delta.getZ()) > 5)
+                probMap[Direction.UP.ordinal()] = 50;
+
+            seed = CoordUtils.coordHashCode(rootPos, 3) + ((ServerLevel) world).getSeed();
+            random = new Random(seed);
+            if (delta.getY() > 16 + random.nextInt(4)) {
+                probMap = new int[]{0, 3, random.nextInt(10), random.nextInt(10), random.nextInt(10), random.nextInt(10)};
+            }
+            seed = CoordUtils.coordHashCode(pos, 3) + ((ServerLevel) world).getSeed();
+            random = new Random(seed);
             float ran = random.nextFloat();
-            if (delta.getX() >= 0 && delta.getZ() > 0) {
-                probMap = new int[]{0, 0, 0, 10, 0, 0};
-                if (ran < 0.456) {
-                    probMap = new int[]{0, 10, 0, 1, 0, 0};
-                } else if (ran < 0.66) {
-                    probMap = new int[]{0, 0, 0, 1, 0, 10};
+            if (Mth.abs(delta.getX()) < 5 && Mth.abs(delta.getZ()) < 5) {
+                if (delta.getX() >= 0 && delta.getZ() > 0) {
+                    probMap = new int[]{0, 0, 0, 1, 0, 0};
+                    if (ran < 0.332) {
+                        probMap = new int[]{0, 10, 0, 1, 0, 0};
+                    }
                 }
-            }
-            // north
-            else if (delta.getX() <= 0 && delta.getZ() < 0) {
-                probMap = new int[]{0, 0, 10, 0, 0, 0};
-                if (ran < 0.456) {
-                    probMap = new int[]{0, 10, 1, 0, 0, 0};
-                } else if (ran < 0.66) {
-                    probMap = new int[]{0, 0, 0, 1, 10, 0};
+                // north
+                else if (delta.getX() <= 0 && delta.getZ() < 0) {
+                    probMap = new int[]{0, 0, 1, 0, 0, 0};
+                    if (ran < 0.332) {
+                        probMap = new int[]{0, 10, 0, 0, 0, 0};
+                    }
                 }
-            }
-            // west
-            else if (delta.getX() < 0 && delta.getZ() >= 0) {
-                probMap = new int[]{0, 0, 0, 0, 10, 0};
-                if (ran < 0.456) {
-                    probMap = new int[]{0, 10, 0, 0, 1, 0};
-                } else if (ran < 0.66) {
-                    probMap = new int[]{0, 0, 0, 10, 1, 0};
+                // west
+                else if (delta.getX() < 0 && delta.getZ() >= 0) {
+                    probMap = new int[]{0, 0, 0, 0, 1, 0};
+                    if (ran < 0.332) {
+                        probMap = new int[]{0, 10, 0, 0, 0, 0};
+                    }
                 }
-            }
-            // test east
-            else if (delta.getX() > 0 && delta.getZ() <= 0) {
-                probMap = new int[]{0, 0, 0, 0, 0, 10};
-                if (ran < 0.456) {
-                    probMap = new int[]{0, 10, 0, 0, 0, 1};
-                } else if (ran < 0.66) {
-                    probMap = new int[]{0, 0, 10, 0, 0, 1};
-                }
-            } else {
-                probMap[Direction.UP.ordinal()] = 1;
-                probMap[2 + random.nextInt(4)] = 4;
-                probMap = new int[]{0, 3, 1 + random.nextInt(2), 1 + random.nextInt(2), 1 + random.nextInt(2), 1 + random.nextInt(2)};
-            }
-
-            if (Mth.abs(delta.getX()) > 9 || Mth.abs(delta.getZ()) > 9)
-                probMap[Direction.UP.ordinal()] = 20;
-
-
-            if (delta.getY() > 15 + random.nextInt(7)) {
-                probMap = new int[]{0, 0, random.nextInt(4), random.nextInt(4), random.nextInt(4), random.nextInt(4)};
-            }
-
-            if (delta.getY() > 8 + random.nextInt(4))
-                for (Direction direction : List.of(Direction.EAST, Direction.WEST, Direction.NORTH, Direction.SOUTH)) {
-                    probMap[direction.ordinal()] = random.nextInt(2);
+                // test east
+                else if (delta.getX() > 0 && delta.getZ() <= 0) {
+                    probMap = new int[]{0, 0, 0, 0, 0, 1};
+                    if (ran < 0.332) {
+                        probMap = new int[]{0, 10, 0, 0, 0, 0};
+                    }
                 }
 
-            // disable origin
+                if (Mth.abs(delta.getX()) < 3 && Mth.abs(delta.getZ()) < 3 && ran > 0.85) {
+                    probMap[1] += 1;
+                }
+            }
 
-            // if (delta.getX()!=0&&delta.getZ()!=0){
-            //     if (delta.getX() % 2 == 0||delta.getZ() % 2 == 0) {
-            //         probMap = new int[]{0, 1, 0, 0, 0, 0};
-            //     }
-            // }
-            // if ((delta.getX() > 2 && delta.getX() % 2 == 0&&delta.getY() % 2 == 1 )||
-            //         (delta.getY() % 2 == 0&&delta.getX() % 2 == 1)) {
-            //     probMap = new int[]{0, 1, 0, 0, 0, 0};
-            // }
-
-            DTBetterEnd.logger(signal.energy,signal.numSteps,ran, seed, delta);
+            // DTBetterEnd.logger(signal.energy, signal.numSteps, ran, seed, delta);
         }
+        // DTBetterEnd.logger(delta, probMap);
         probMap[originDir.ordinal()] = 0;
-        // DTBetterEnd.logger(signal.delta, probMap);
-        // if (delta.getY()>6){
-        //     probMap = new int[]{100, 0, 0, 0, 0, 0};
-        // }
         return probMap;
     }
 
@@ -155,7 +128,7 @@ public class DragonTreeLogic extends GrowthLogicKit {
     public float getEnergy(GrowthLogicKitConfiguration configuration, PositionalSpeciesContext context) {
         long day = context.level().getGameTime() / 24000L;
         int month = (int) day / 30; // Change the hashs every in-game month
-        var en= super.getEnergy(configuration, context) *
+        var en = super.getEnergy(configuration, context) *
                 context.species().biomeSuitability(context.level(), context.pos()) +
                 (CoordUtils.coordHashCode(context.pos().above(month), 3) %
                         3); // Vary the height energy by a psuedorandom hash function

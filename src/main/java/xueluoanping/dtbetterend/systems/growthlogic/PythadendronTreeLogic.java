@@ -49,7 +49,7 @@ public class PythadendronTreeLogic extends GrowthLogicKit {
         final Species species = context.species();
         final Level world = context.level();
         final GrowSignal signal = context.signal();
-        int[] probMap = new int[]{0, 2, 0, 0, 0, 0};
+        int[] probMap = new int[]{0, 10, 0, 0, 0, 0};
         final BlockPos pos = context.pos();
         var rootPos = signal.rootPos;
         Direction originDir = signal.dir.getOpposite();
@@ -58,84 +58,72 @@ public class PythadendronTreeLogic extends GrowthLogicKit {
         Random random = new Random(seed);
         var delta = signal.delta;
 
-        if (signal.numSteps == 5) {
-            probMap = new int[]{0, 3, 1 + random.nextInt(2), 1 + random.nextInt(2), 1 + random.nextInt(2), 1 + random.nextInt(2)};
+        if (signal.numSteps == 10 + random.nextInt(2)) {
+            probMap = new int[]{0, 0, random.nextInt(2), random.nextInt(2), random.nextInt(2), random.nextInt(2)};
+            // probMap = new int[]{0, 0, 0, 0, 0, 1};
+        } else if (signal.numSteps == 15 + random.nextInt(2)) {
+            probMap = new int[]{0, 0, random.nextInt(2), random.nextInt(2), random.nextInt(2), random.nextInt(2)};
             // probMap = new int[]{0, 0, 0, 0, 0, 1};
         } else {
             // south
             float ran = random.nextFloat();
             if (delta.getX() >= 0 && delta.getZ() > 0) {
                 probMap = new int[]{0, 0, 0, 10, 0, 0};
-                if (ran < 0.456) {
-                    probMap = new int[]{0, 10, 0, 1, 0, 0};
+                if (ran < 0.5) {
+                    probMap = new int[]{0, 10, 0, 0, 0, 0};
                 } else if (ran < 0.66) {
-                    probMap = new int[]{0, 0, 0, 1, 0, 10};
+                    probMap = new int[]{0, 0, 0, 0, 0, 10};
                 }
             }
             // north
             else if (delta.getX() <= 0 && delta.getZ() < 0) {
                 probMap = new int[]{0, 0, 10, 0, 0, 0};
-                if (ran < 0.456) {
-                    probMap = new int[]{0, 10, 1, 0, 0, 0};
+                if (ran < 0.5) {
+                    probMap = new int[]{0, 10, 0, 0, 0, 0};
                 } else if (ran < 0.66) {
-                    probMap = new int[]{0, 0, 0, 1, 10, 0};
+                    probMap = new int[]{0, 0, 0, 0, 10, 0};
                 }
             }
             // west
             else if (delta.getX() < 0 && delta.getZ() >= 0) {
                 probMap = new int[]{0, 0, 0, 0, 10, 0};
-                if (ran < 0.456) {
-                    probMap = new int[]{0, 10, 0, 0, 1, 0};
+                if (ran < 0.5) {
+                    probMap = new int[]{0, 10, 0, 0, 0, 0};
                 } else if (ran < 0.66) {
-                    probMap = new int[]{0, 0, 0, 10, 1, 0};
+                    probMap = new int[]{0, 0, 0, 10, 0, 0};
                 }
             }
             // test east
             else if (delta.getX() > 0 && delta.getZ() <= 0) {
                 probMap = new int[]{0, 0, 0, 0, 0, 10};
-                if (ran < 0.456) {
-                    probMap = new int[]{0, 10, 0, 0, 0, 1};
+                if (ran < 0.5) {
+                    probMap = new int[]{0, 10, 0, 0, 0, 0};
                 } else if (ran < 0.66) {
-                    probMap = new int[]{0, 0, 10, 0, 0, 1};
+                    probMap = new int[]{0, 0, 10, 0, 0, 0};
                 }
-            } else {
-                probMap[Direction.UP.ordinal()] = 1;
-                probMap[2 + random.nextInt(4)] = 4;
-                probMap = new int[]{0, 3, 1 + random.nextInt(2), 1 + random.nextInt(2), 1 + random.nextInt(2), 1 + random.nextInt(2)};
             }
 
-            if (Mth.abs(delta.getX()) > 9 || Mth.abs(delta.getZ()) > 9)
-                probMap[Direction.UP.ordinal()] = 20;
 
+            if (Mth.abs(delta.getX()) > 5 || Mth.abs(delta.getZ()) > 5)
+                probMap[Direction.UP.ordinal()] = 50;
 
-            if (delta.getY() > 15 + random.nextInt(7)) {
-                probMap = new int[]{0, 0, random.nextInt(4), random.nextInt(4), random.nextInt(4), random.nextInt(4)};
+            seed = CoordUtils.coordHashCode(rootPos, 3) + ((ServerLevel) world).getSeed();
+            random = new Random(seed);
+            if (delta.getY() > 21 + random.nextInt(4)) {
+                probMap = new int[]{0, 0, random.nextInt(10), random.nextInt(10), random.nextInt(10), random.nextInt(10)};
             }
+            if (16 + random.nextInt(2) < delta.getY() && delta.getY() < 18 + random.nextInt(2))
+                probMap = new int[]{0, 10, random.nextInt(10), random.nextInt(10), random.nextInt(10), random.nextInt(10)};
 
-            if (delta.getY() > 8 + random.nextInt(4))
-                for (Direction direction : List.of(Direction.EAST, Direction.WEST, Direction.NORTH, Direction.SOUTH)) {
-                    probMap[direction.ordinal()] = random.nextInt(2);
-                }
-
-            // disable origin
-
-            // if (delta.getX()!=0&&delta.getZ()!=0){
-            //     if (delta.getX() % 2 == 0||delta.getZ() % 2 == 0) {
-            //         probMap = new int[]{0, 1, 0, 0, 0, 0};
+            // for (Direction direction : List.of(Direction.SOUTH, Direction.WEST, Direction.NORTH, Direction.EAST)) {
+            //         probMap[direction.ordinal()] = 1;
             //     }
-            // }
-            // if ((delta.getX() > 2 && delta.getX() % 2 == 0&&delta.getY() % 2 == 1 )||
-            //         (delta.getY() % 2 == 0&&delta.getX() % 2 == 1)) {
-            //     probMap = new int[]{0, 1, 0, 0, 0, 0};
-            // }
 
-            DTBetterEnd.logger(signal.energy,signal.numSteps,ran, seed, delta);
+
+            // DTBetterEnd.logger(signal.energy, signal.numSteps, ran, seed, delta);
         }
+        // DTBetterEnd.logger(delta, probMap);
         probMap[originDir.ordinal()] = 0;
-        // DTBetterEnd.logger(signal.delta, probMap);
-        // if (delta.getY()>6){
-        //     probMap = new int[]{100, 0, 0, 0, 0, 0};
-        // }
         return probMap;
     }
 
@@ -155,7 +143,7 @@ public class PythadendronTreeLogic extends GrowthLogicKit {
     public float getEnergy(GrowthLogicKitConfiguration configuration, PositionalSpeciesContext context) {
         long day = context.level().getGameTime() / 24000L;
         int month = (int) day / 30; // Change the hashs every in-game month
-        var en= super.getEnergy(configuration, context) *
+        var en = super.getEnergy(configuration, context) *
                 context.species().biomeSuitability(context.level(), context.pos()) +
                 (CoordUtils.coordHashCode(context.pos().above(month), 3) %
                         3); // Vary the height energy by a psuedorandom hash function

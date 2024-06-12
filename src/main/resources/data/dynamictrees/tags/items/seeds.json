@@ -1,13 +1,10 @@
 {
-    "replace":false,
-    "values":[
-        "dtbetterend:dragon_tree_seed",
-        "dtbetterend:helix_tree_seed",
-        "dtbetterend:lacugrove_seed",
-        "dtbetterend:lucernia_seed",
-        "dtbetterend:mossy_glowshroom_seed",
-        "dtbetterend:pythadendron_seed",
-        "dtbetterend:tenanea_seed",
-        "dtbetterend:umbrella_tree_seed"
-    ]
+  "replace": false,
+  "values": [
+    "dtbetterend:dragon_tree_seed",
+    "dtbetterend:lacugrove_seed",
+    "dtbetterend:lucernia_seed",
+    "dtbetterend:pythadendron_seed",
+    "dtbetterend:tenanea_seed"
+  ]
 }

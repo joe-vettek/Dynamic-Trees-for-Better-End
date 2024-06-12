@@ -1,7 +1,0 @@
-{
-    "loader":"dynamictrees:branch",
-    "textures":{
-        "bark":"betterend:block/umbrella_tree_log_side",
-        "rings":"betterend:block/umbrella_tree_log_top"
-    }
-}
