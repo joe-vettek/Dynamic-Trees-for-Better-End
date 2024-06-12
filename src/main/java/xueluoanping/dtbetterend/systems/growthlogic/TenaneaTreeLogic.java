@@ -58,7 +58,7 @@ public class TenaneaTreeLogic extends GrowthLogicKit {
         Random random = new Random(seed);
         var delta = signal.delta;
 
-        if (signal.numSteps == 5) {
+        if (signal.numSteps == 5+random.nextInt(2)) {
             probMap = new int[]{0, 0, 1 + random.nextInt(2), 1 + random.nextInt(2), 1 + random.nextInt(2), 1 + random.nextInt(2)};
             // probMap = new int[]{0, 0, 0, 0, 0, 1};
         } else {
