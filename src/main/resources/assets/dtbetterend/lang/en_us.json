@@ -18,5 +18,7 @@
   "block.dtbetterend.tenanea_branch": "Tenanea Tree",
   "block.dtbetterend.tenanea_sapling": "Tenanea Sapling",
   "item.dtbetterend.tenanea_seed": "Tenanea Seed",
-  "species.dtbetterend.tenanea": "Tenanea"
+  "species.dtbetterend.tenanea": "Tenanea",
+  "tooltip.soil.hint": "§aCan only Survive on §u%s",
+  "tooltip.soil2.hint": "§aCan only Survive on §u%s, %s"
 }

@@ -22,7 +22,7 @@ public class DTBetterEnd {
     // Directly reference a log4j logger.
     public static final Logger LOGGER = LogManager.getLogger();
 
-    public static final boolean useLogger=Objects.equals(System.getProperty("forgegradle.runs.dev"), "true");
+    public static final boolean useLogger = Objects.equals(System.getProperty("forgegradle.runs.dev"), "true");
 
     public DTBetterEnd() {
         // Register the setup method for modloading
@@ -41,7 +41,7 @@ public class DTBetterEnd {
         // MinecraftForge.EVENT_BUS.register(TreeGrowHandler.instance);
         RegistryHandler.setup(MOD_ID);
 
-
+        DTBetterEndRegistries.items.register(FMLJavaModLoadingContext.get().getModEventBus());
 
     }
 
@@ -68,7 +68,6 @@ public class DTBetterEnd {
         //                map(m->m.getMessageSupplier().get()).
         //                collect(Collectors.toList()));
     }
-
 
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD

@@ -22,8 +22,9 @@
     },
     "acceptable_soils": ["chorus_nylium"],
     "primitive_sapling":"betterend:pythadendron_sapling",
+    "seed": "dtbetterend:pythadendron_seed",
     "always_show_on_waila":false,
-    "generate_seed":true,
+    "generate_seed":false,
     "generate_sapling":true,
     "features": ["roots","mound","clear_volume"]
 }

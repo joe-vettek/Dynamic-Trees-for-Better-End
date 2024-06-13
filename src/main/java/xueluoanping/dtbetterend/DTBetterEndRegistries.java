@@ -11,20 +11,32 @@ import com.ferreusveritas.dynamictrees.deserialisation.PropertyAppliers;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
 import com.ferreusveritas.dynamictrees.systems.fruit.Fruit;
 import com.ferreusveritas.dynamictrees.systems.genfeature.GenFeature;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.google.gson.JsonElement;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import xueluoanping.dtbetterend.systems.ModCellKit;
-import xueluoanping.dtbetterend.systems.ModFeatureCanceller;
-import xueluoanping.dtbetterend.systems.ModFeatures;
-import xueluoanping.dtbetterend.systems.ModGrowthLogicKits;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import xueluoanping.dtbetterend.systems.*;
 import xueluoanping.dtbetterend.systems.leaves.FurOuterLeaveProperties;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DTBetterEndRegistries {
 
-    public static void addSoil(){
+    public static final DeferredRegister<Item> items = DeferredRegister.create(ForgeRegistries.ITEMS, DTBetterEnd.MOD_ID);
+
+    static {
+        items.register("dragon_tree_seed", () -> new ModSeed.DragonTreeSeed(Species.REGISTRY.get(DTBetterEnd.rl("dragon_tree"))));
+        items.register("lacugrove_seed", () -> new ModSeed.LacugroveSeed(Species.REGISTRY.get(DTBetterEnd.rl("lacugrove"))));
+        items.register("lucernia_seed", () -> new ModSeed.LucerniaSeed(Species.REGISTRY.get(DTBetterEnd.rl("lucernia"))));
+        items.register("pythadendron_seed", () -> new ModSeed.PythadendronSeed(Species.REGISTRY.get(DTBetterEnd.rl("pythadendron"))));
+        items.register("tenanea_seed", () -> new ModSeed.TenaneaSeed(Species.REGISTRY.get(DTBetterEnd.rl("tenanea"))));
+    }
+
+
+    public static void addSoil() {
         SoilHelper.createNewAdjective("");
     }
 
@@ -35,7 +47,6 @@ public class DTBetterEndRegistries {
         // event.registerType(new ResourceLocation(DTFruitfulFun.MOD_ID, "fruittrees"), FruitsLeavesProperties.TYPE);
         event.registerType(DTBetterEnd.rl("fur"), FurOuterLeaveProperties.TYPE);
         //
-
 
 
     }

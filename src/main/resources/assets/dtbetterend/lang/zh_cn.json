@@ -18,5 +18,7 @@
   "block.dtbetterend.tenanea_branch": "十纹木",
   "block.dtbetterend.tenanea_sapling": "十纹木树苗",
   "item.dtbetterend.tenanea_seed": "十纹木种子",
-  "species.dtbetterend.tenanea": "十纹木"
+  "species.dtbetterend.tenanea": "十纹木",
+  "tooltip.soil.hint": "§a仅在§u%s上存活",
+  "tooltip.soil2.hint": "§a仅在§u%s，%s上存活"
 }

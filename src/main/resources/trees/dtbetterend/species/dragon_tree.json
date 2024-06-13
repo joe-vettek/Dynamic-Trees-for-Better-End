@@ -23,7 +23,8 @@
   "acceptable_soils": ["shadow_grass"],
   "primitive_sapling": "betterend:dragon_tree_sapling",
   "always_show_on_waila": false,
-  "generate_seed": true,
+  "seed": "dtbetterend:dragon_tree_seed",
+  "generate_seed": false,
   "generate_sapling": true,
   "features": [
     "roots",

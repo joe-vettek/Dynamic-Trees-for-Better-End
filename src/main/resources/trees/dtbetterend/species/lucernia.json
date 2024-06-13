@@ -25,8 +25,9 @@
   },
   "acceptable_soils": ["rutiscus"],
   "primitive_sapling": "betterend:lucernia_sapling",
+  "seed": "dtbetterend:lucernia_seed",
   "always_show_on_waila": false,
-  "generate_seed": true,
+  "generate_seed": false,
   "generate_sapling": true,
   "features": [
     "roots",
