@@ -24,10 +24,8 @@ public class ModSeed {
 
         @Override
         public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+            SurvivesOnSpecialGround.appendHoverText(this, tooltip);
             super.appendHoverText(stack, level, tooltip, flag);
-            List<Component> tooltips=new ArrayList<>();
-            SurvivesOnSpecialGround.appendHoverText(this, tooltips);
-            tooltip.addAll(tooltips.size()-1,tooltips);
         }
     }
 
@@ -38,10 +36,9 @@ public class ModSeed {
 
         @Override
         public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+            SurvivesOnSpecialGround.appendHoverText(this, tooltip);
             super.appendHoverText(stack, level, tooltip, flag);
-            List<Component> tooltips=new ArrayList<>();
-            SurvivesOnSpecialGround.appendHoverText(this, tooltips);
-            tooltip.addAll(tooltips.size()-1,tooltips);
+
         }
     }
 
@@ -52,10 +49,8 @@ public class ModSeed {
 
         @Override
         public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+            SurvivesOnSpecialGround.appendHoverText(this, tooltip);
             super.appendHoverText(stack, level, tooltip, flag);
-            List<Component> tooltips=new ArrayList<>();
-            SurvivesOnSpecialGround.appendHoverText(this, tooltips);
-            tooltip.addAll(tooltips.size()-1,tooltips);
 
         }
     }
@@ -67,10 +62,8 @@ public class ModSeed {
 
         @Override
         public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+            SurvivesOnSpecialGround.appendHoverText(this, tooltip);
             super.appendHoverText(stack, level, tooltip, flag);
-            List<Component> tooltips=new ArrayList<>();
-            SurvivesOnSpecialGround.appendHoverText(this, tooltips);
-            tooltip.addAll(tooltips.size()-1,tooltips);
         }
     }
 
@@ -81,10 +74,8 @@ public class ModSeed {
 
         @Override
         public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+            SurvivesOnSpecialGround.appendHoverText(this, tooltip);
             super.appendHoverText(stack, level, tooltip, flag);
-            List<Component> tooltips=new ArrayList<>();
-            SurvivesOnSpecialGround.appendHoverText(this, tooltips);
-            tooltip.addAll(tooltips.size()-1,tooltips);
         }
     }
 }
