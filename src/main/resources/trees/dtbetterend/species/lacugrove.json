@@ -14,17 +14,14 @@
     },
     "leaves_properties":"dtbetterend:lacugrove",
     "environment_factors":{
-        "cold":0.75,
-        "hot":0.5,
-        "dry":0.5,
-        "forest":1.05
+        "is_overworld": 0.95,
+        "is_end": 1.05
     },
     "perfect_biomes":{
-        "types":[
-            "forest",
-            "overworld"
-        ]
+        "name": "betterend:megalake_grove"
+
     },
+    "acceptable_soils": ["moss_or_dust"],
     "primitive_sapling":"betterend:lacugrove_sapling",
     "always_show_on_waila":false,
     "generate_seed":true,

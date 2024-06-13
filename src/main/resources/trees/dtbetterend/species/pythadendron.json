@@ -14,17 +14,13 @@
     },
     "leaves_properties":"dtbetterend:pythadendron",
     "environment_factors":{
-        "cold":0.75,
-        "hot":0.5,
-        "dry":0.5,
-        "forest":1.05
+        "is_overworld": 0.95,
+        "is_end": 1.05
     },
     "perfect_biomes":{
-        "types":[
-            "forest",
-            "overworld"
-        ]
+        "name": "betterend:chorus_forest"
     },
+    "acceptable_soils": ["chorus_nylium"],
     "primitive_sapling":"betterend:pythadendron_sapling",
     "always_show_on_waila":false,
     "generate_seed":true,

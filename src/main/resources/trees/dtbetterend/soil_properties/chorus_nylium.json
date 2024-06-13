@@ -1,0 +1,7 @@
+{
+    "primitive_soil":"betterend:chorus_nylium",
+    "acceptable_soils":[
+        "chorus_nylium"
+    ],
+    "substitute_soil":"end_stone"
+}

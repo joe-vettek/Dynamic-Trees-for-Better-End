@@ -34,6 +34,7 @@ public class ModFeatureCanceller extends FeatureCanceller {
             return false;
         }
         // DTNaturesSpirit.logger(featureName,featureName.toString().equals("natures_spirit:joshua_tree_feature"));
+        // return false;
         return features.contains(featureName.toString());
         // && (WorldGenRegistries.CONFIGURED_FEATURE.getKey(configuredFeature) + "").startsWith("fruittrees");
     }

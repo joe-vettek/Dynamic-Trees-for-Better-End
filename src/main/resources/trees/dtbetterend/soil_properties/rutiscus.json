@@ -1,0 +1,7 @@
+{
+    "primitive_soil":"betterend:rutiscus",
+    "acceptable_soils":[
+        "rutiscus"
+    ],
+    "substitute_soil":"end_stone"
+}

@@ -12,17 +12,13 @@
         }
     },
     "environment_factors":{
-        "cold":0.75,
-        "hot":0.5,
-        "dry":0.5,
-        "forest":1.05
+        "is_overworld": 0.95,
+        "is_end": 1.05
     },
     "perfect_biomes":{
-        "types":[
-            "forest",
-            "overworld"
-        ]
+        "name": "betterend:blossoming_spires"
     },
+    "acceptable_soils": ["pink_moss"],
     "primitive_sapling":"betterend:tenanea_sapling",
     "always_show_on_waila":false,
     "generate_seed":true,

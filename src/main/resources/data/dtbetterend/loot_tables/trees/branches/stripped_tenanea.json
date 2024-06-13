@@ -1,42 +1,42 @@
 {
-    "type":"minecraft:block",
-    "pools":[
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
         {
-            "bonus_rolls":0.0,
-            "entries":[
-                {
-                    "type":"minecraft:item",
-                    "functions":[
-                        {
-                            "function":"dynamictrees:multiply_logs_count"
-                        },
-                        {
-                            "function":"minecraft:explosion_decay"
-                        }
-                    ],
-                    "name":"betterend:stripped_tenanea_log"
-                }
-            ],
-            "rolls":1.0
-        },
-        {
-            "bonus_rolls":0.0,
-            "entries":[
-                {
-                    "type":"minecraft:item",
-                    "functions":[
-                        {
-                            "function":"dynamictrees:multiply_sticks_count"
-                        },
-                        {
-                            "function":"minecraft:explosion_decay"
-                        }
-                    ],
-                    "name":"minecraft:stick"
-                }
-            ],
-            "rolls":1.0
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "dynamictrees:multiply_logs_count"
+            },
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ],
+          "name": "betterend:tenanea_stripped_log"
         }
-    ],
-    "random_sequence":"dtbetterend:trees/branches/stripped_tenanea"
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "dynamictrees:multiply_sticks_count"
+            },
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ],
+          "name": "minecraft:stick"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "dtbetterend:trees/branches/stripped_tenanea"
 }

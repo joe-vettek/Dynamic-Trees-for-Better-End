@@ -1,0 +1,7 @@
+{
+    "primitive_soil":"betterend:shadow_grass",
+    "acceptable_soils":[
+        "shadow_grass"
+    ],
+    "substitute_soil":"end_stone"
+}

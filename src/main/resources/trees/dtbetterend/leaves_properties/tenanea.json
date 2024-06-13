@@ -1,6 +1,6 @@
 {
     "type": "dtbetterend:fur",
-    "primitive_leaves":"betterend:tenanea_outer_leaves",
+    "primitive_leaves":"betterend:tenanea_leaves",
     "outer_block":"betterend:tenanea_outer_leaves",
     "cell_kit": "dynamictrees:dark_oak"
 }
