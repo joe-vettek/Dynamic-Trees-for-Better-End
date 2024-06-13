@@ -36,6 +36,8 @@ public class DTBetterEndRegistries {
         event.registerType(DTBetterEnd.rl("fur"), FurOuterLeaveProperties.TYPE);
         //
 
+
+
     }
 
     @SubscribeEvent

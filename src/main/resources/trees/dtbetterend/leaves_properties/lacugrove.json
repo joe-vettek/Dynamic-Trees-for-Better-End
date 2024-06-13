@@ -1,4 +1,6 @@
 {
     "primitive_leaves":"betterend:lacugrove_leaves",
-    "cell_kit": "dynamictrees:dark_oak"
+    "cell_kit": "dynamictrees:dark_oak",
+    "smother": 7,
+    "light_requirement": 0
 }
