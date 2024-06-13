@@ -1,0 +1,104 @@
+[
+  {
+    "select": {
+      "name": "betterend:blossoming_spires"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbetterend:tenanea": 1
+        }
+      },
+      "density": [
+        0.9
+      ],
+      "chance": 0.95,
+      "forestness": 1.0
+    }
+  },
+  {
+    "select": {
+      "name": "betterend:chorus_forest"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbetterend:pythadendron": 1
+        }
+      },
+      "density": [
+        0.5
+      ],
+      "chance": 0.78,
+      "forestness": 1.0
+    }
+  },
+  {
+    "select": {
+      "name": "betterend:dry_shrubland"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbetterend:lucernia": 1
+        }
+      },
+      "density": [
+        0.5
+      ],
+      "chance": 0.75,
+      "forestness": 1.0
+    }
+  },
+  {
+    "select": {
+      "name": "betterend:lantern_woods"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbetterend:lucernia": 1
+        }
+      },
+      "density": [
+        0.85
+      ],
+      "chance": 0.9,
+      "forestness": 1.0
+    }
+  },
+  {
+    "select": {
+      "name": "betterend:megalake_grove"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbetterend:lacugrove": 1
+        }
+      },
+      "density": [
+        0.55
+      ],
+      "chance": 0.95,
+      "forestness": 1.0
+    }
+  },
+  {
+    "select": {
+      "name": "betterend:shadow_forest"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbetterend:dragon_tree": 1
+        }
+      },
+      "density": [
+        0.89
+      ],
+      "chance": 0.92,
+      "forestness": 1.0
+    }
+  }
+]

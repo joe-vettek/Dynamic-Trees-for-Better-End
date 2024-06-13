@@ -65,7 +65,11 @@ public class LacugroveTreeLogic extends GrowthLogicKit {
 
             if (delta.getX() <= 1 && delta.getZ() <= 1)
                 if (delta.getY() > 5 + random.nextInt(4) && delta.getY() % Mth.clamp(random.nextInt(3), 1, 3) == 0) {
-                    probMap = new int[]{0, 10, random.nextInt(7) + 3, random.nextInt(7) + 3, random.nextInt(7) + 3, random.nextInt(7) + 3};
+                    probMap = new int[]{0, 5, random.nextInt(7) + 3, random.nextInt(7) + 3, random.nextInt(7) + 3, random.nextInt(7) + 3};
+                    for (int i = 2; i < 6; i++) {
+                        probMap[1] += probMap[i];
+                    }
+                    probMap[1] = probMap[1] / 2;
                     // DTBetterEnd.logger(delta);
                 }
 
@@ -108,8 +112,8 @@ public class LacugroveTreeLogic extends GrowthLogicKit {
             long seed = CoordUtils.coordHashCode(pos, 3) + ((ServerLevel) context.level()).getSeed();
             Random random = new Random(seed);
             var delta = context.signal().delta;
-            context.signal().energy /= delta.getY() > 8 + random.nextInt(4) ? 2 : 4;
-            final Float horizontalLimiter = 4f+random.nextInt(3);
+            context.signal().energy /= delta.getY() > 8 + random.nextInt(4) ? 1.5 : 3;
+            final Float horizontalLimiter = 4f + random.nextInt(3);
             if (context.signal().energy > horizontalLimiter) {
                 context.signal().energy = horizontalLimiter;
             }

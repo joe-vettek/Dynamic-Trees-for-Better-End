@@ -1,0 +1,14 @@
+[
+  {
+    "__comment": "Cancel standard tree features from the overworld in natures_spirit.",
+    "select": {
+      "name": "betterend:.*",
+      "tag": "#minecraft:is_end"
+    },
+    "cancellers": {
+      "type": "dtbetterend:betterend_tree",
+      "namespace": "minecraft"
+    }
+  }
+]
+

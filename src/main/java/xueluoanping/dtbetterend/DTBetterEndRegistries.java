@@ -14,10 +14,11 @@ import com.google.gson.JsonElement;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import xueluoanping.dtbetterend.systems.ModCellKit;
+import xueluoanping.dtbetterend.systems.ModFeatureCanceller;
 import xueluoanping.dtbetterend.systems.ModFeatures;
 import xueluoanping.dtbetterend.systems.ModGrowthLogicKits;
 import xueluoanping.dtbetterend.systems.leaves.FurOuterLeaveProperties;
-import xueluoanping.dtbetterend.systems.worldgen.FruitTreesFeatureCanceller;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DTBetterEndRegistries {
@@ -41,11 +42,9 @@ public class DTBetterEndRegistries {
     }
 
 
-    public static final FeatureCanceller FRUIT_TREES_CANCELLER = new FruitTreesFeatureCanceller(DTBetterEnd.rl("fruittrees"));
-
     @SubscribeEvent
     public static void onFeatureCancellerRegistry(final RegistryEvent<FeatureCanceller> event) {
-        event.getRegistry().registerAll(FRUIT_TREES_CANCELLER);
+        event.getRegistry().register(new ModFeatureCanceller(DTBetterEnd.rl("betterend_tree")));
     }
 
     @SubscribeEvent
@@ -60,7 +59,7 @@ public class DTBetterEndRegistries {
 
     @SubscribeEvent
     public static void onCellKitsRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<CellKit> event) {
-        // ModCellKit.register(event.getRegistry());
+        ModCellKit.register(event.getRegistry());
     }
 
 
