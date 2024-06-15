@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ModSeed {
 
-    public static class DragonTreeSeed extends Seed implements SurvivesOnEndMoss {
+    public static class DragonTreeSeed extends Seed implements SurvivesOnShadowGrass {
         public DragonTreeSeed(Species dragonTree) {
             super(dragonTree);
         }
