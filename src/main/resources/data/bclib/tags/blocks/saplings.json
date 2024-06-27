@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "dtbetterend:dragon_tree_sapling",
+    "dtbetterend:lacugrove_sapling",
+    "dtbetterend:lucernia_sapling",
+    "dtbetterend:pythadendron_sapling",
+    "dtbetterend:tenanea_sapling"
+  ]
+}
